@@ -1,0 +1,26 @@
+<div class="user-list-container">
+    <mat-form-field class="search-field">
+      <input matInput placeholder="Search by name" [(ngModel)]="searchKey" (keyup)="applyFilter()">
+    </mat-form-field>
+  
+    <div class="user-card-container" *ngIf="dataSource">
+        <mat-card *ngFor="let user of dataSource.filteredData" class="user-card">
+            <div class="avatar-container">
+              <img class="avatar" [src]="user.avatar" alt="User Avatar">
+            </div>
+            <mat-card-content>
+              <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+              <p>Email: {{ user.email }}</p>
+              <p>Gender: {{ user.gender }}</p>
+              <p>Domain: {{ user.domain }}</p>
+            </mat-card-content>
+          </mat-card>
+
+          
+    </div>
+              <mat-paginator [pageSizeOptions]="[20, 30, 50]" [pageSize]="20" (pageSizeChange)="onPageSizeChange($event)" showFirstLastButtons></mat-paginator>
+
+  
+
+</div>
+  
